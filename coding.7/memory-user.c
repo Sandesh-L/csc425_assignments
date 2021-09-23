@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
 
   int length = atoi(argv[2]);
 
-  int *a = malloc(byte);
+  int *a = malloc(byte*sizeof(int));
 
 
   //got code for time tracking from https://www.geeksforgeeks.org/how-to-measure-time-taken-by-a-program-in-c/
@@ -23,8 +23,9 @@ int main(int argc, char *argv[]){
   end = clock();
   while ((((double) (end - start)) / CLOCKS_PER_SEC) < length){
     // printf("%f", ((double) (end - start)) / CLOCKS_PER_SEC);
-    for(int i = 0; 1 < byte; i++){
-      a[i] += 1;
+    for(int i = 0; i < byte; i++){
+      printf("%ls", a);
+      // a[i] += 1;
       // printf("%i", a[i]); //I recommend commenting this part out.
     }
     end = clock();
