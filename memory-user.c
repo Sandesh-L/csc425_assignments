@@ -11,25 +11,25 @@ int main(int argc, char *argv[]){
   }
 
   int byte = atoi(argv[1]);
-  int mem_to_use = (1024*1024)*byte;
 
   int length = atoi(argv[2]);
 
-  int *a = malloc(mem_to_use);
+  int *a = malloc(byte);
 
 
   //got code for time tracking from https://www.geeksforgeeks.org/how-to-measure-time-taken-by-a-program-in-c/
   clock_t start,end;
   start = clock();
   end = clock();
-  while ((((double) (end - start)) / CLOCKS_PER_SEC)>=length){
-
-    for(int i = 0; 1 < mem_to_use; i++){
-      a += 1;
+  while ((((double) (end - start)) / CLOCKS_PER_SEC) < length){
+    // printf("%f", ((double) (end - start)) / CLOCKS_PER_SEC);
+    for(int i = 0; 1 < byte; i++){
+      a[i] += 1;
+      // printf("%i", a[i]); //I recommend commenting this part out.
     }
     end = clock();
   }
-  printf((double) (end - start)) / CLOCKS_PER_SEC))
+  printf("time run: %f \n", (((double) (end - start)) / CLOCKS_PER_SEC));
   return 0;
 
 }
