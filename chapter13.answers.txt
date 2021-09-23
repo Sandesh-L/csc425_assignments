@@ -1,4 +1,4 @@
-4) When the `memory-user` program is running, memory used increases. When the program is killed/stops working, the used it stops increasing. When the amount of memory usage gets too big, I get a segmentaiton fault.
+4) When the memory-user program is running, memory used increases. When the program is killed/stops working, the used it stops increasing. When the amount of memory usage gets too big, I get a segmentaiton fault.
 5) I see a table with a bunch of values. There are 20 different rows that I assume make up the address spcae.
 6)
 
