@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
-#include <string>
 using namespace std;
 
 long int* RAM; // basically simulating RAM at the start of this
@@ -19,13 +18,8 @@ int main() {
 
   long int* addr1 = me.reserve_space(100);
   me.print();
-
-  cout << "addr1 is at " << addr1 << "\n";
-
   long int* addr2 = me.reserve_space(200);
   me.print();
-
-  cout << "addr2 is at " << addr1 << "\n";
 
   me.free_space( addr1 );
   me.print();
