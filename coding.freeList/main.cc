@@ -21,12 +21,13 @@ int main() {
   long int* addr2 = me.reserve_space(200);
   me.print();
 
-  me.free_space( addr1 );
+
+  me.free_space( addr2 );
   me.print();
   me.coalesce_forward();
   me.print();
 
-  me.free_space( addr2 );
+  me.free_space( addr1 );
   me.print();
 
   me.coalesce_forward();

@@ -40,40 +40,22 @@ freeList::coalesce_forward() {
     long int* nextNode = (long int*) currentNode[1]; //headder location for next node
     long int sizeOfNextNode = nextNode[0]; //size of the next node
 
-    if ((nextNode+2+sizeOfNextNode) == (currentNode) ){ //if the end of the next node is the start of the current one
-      cout << "going backwards" << endl;
-      cout << "currentNode used to be at: " << currentNode << endl;
-      cout << "currentNode size used to be: " << dec<<currentNode[0] << endl;
-      sizeOfNextNode = sizeOfNextNode+2+currentNode[0]; // expand the next node to include the current one (header included)
-      nextNode[0] = sizeOfNextNode;
-      currentNode = nextNode;  //set the next node to be the currentNode
-
-      cout << "currentNode is at: " << currentNode << endl;
-      cout << "currentNode size is: " << dec <<currentNode[0] << endl;
-
-      cout << "pointer moved to : " << nextNode[1] << endl;
-      currentNode = (long int*)nextNode[1];
-    } else if ((currentNode+2+currentNode[0]) == nextNode){ //if the end of current node is the start of the next one
+    if ((currentNode+2+currentNode[0]) == nextNode){ //if the end of current node is the start of the next one
       cout << "going forwards" << endl;
-      cout << "currentNode used to be at: " << currentNode << endl;
-      cout << "current Node size used to be: " << dec << currentNode[0] << endl;
       currentNode[0] = currentNode[0]+2+sizeOfNextNode; //expand the current node to include the next node
       currentNode[1] = nextNode[1]; //set the next value of current node the next value of the next node
+    } else if ((nextNode+2+sizeOfNextNode) == (currentNode) ){ //if the end of the next node is the start of the current one
+      cout << "going backwards" << endl;
 
-      cout << "currentNode is at: " << currentNode << endl;
-      cout << "currentNode size is: " << dec <<currentNode[0] << endl;
-      cout << "pointer moved to : " << nextNode[1] << endl;
-      currentNode = (long int*)nextNode[1];
-    } else{
+      nextNode[0] = sizeOfNextNode+2+currentNode[0]; // expand the next node to include the current one (header included)
+      currentNode = nextNode;  //set the next node to be the currentNode
+
+    }else{
       currentNode = (long int*)currentNode[1];
 
     }
   }
-  // cout << "head used to be: " << head << endl;
-  // cout << "head[0] used to be: " <<dec << head[0] << endl;
-  head = currentNode; //set the head to be at the header of the most recently coalesced node
-  // cout << "head is now: " << head << endl;
-  // cout << "head[0] is now: " << dec <<head[0] << endl;
+
 }
 
 // print() is given to you. It traverses the free list and prints out what is there.
